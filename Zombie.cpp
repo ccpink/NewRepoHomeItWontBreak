@@ -8,7 +8,7 @@
 #include "Zombie.h"
 #include <random>
 #include <algorithm>    // std::random_shuffle
-#include <chrono>
+
 
 
 Zombie::Zombie(int x, int y, int ID) : Entity(x, y, true, ID) {
@@ -20,10 +20,7 @@ bool Zombie::turnZombie() {
 }
 
 void Zombie::move(){
-    std::default_random_engine rng(static_cast<unsigned> (std::chrono::system_clock::now().time_since_epoch().count()));
-
-    // shuffle the deck
-    std::shuffle(openDirections.begin(), openDirections.end(), rng);
+    std::shuffle( openDirections.begin(), openDirections.end() , std::mt19937(std::random_device()()));
 
     std::string direction =  openDirections.at(0);
 
