@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+F:/ZombiesVSHumans/Entity.h
+
+F:/ZombiesVSHumans/Zombie.cpp
+string
+-
+iostream
+-
+vector
+-
+Zombie.h
+F:/ZombiesVSHumans/Zombie.h
+random
+-
+algorithm
+-
+chrono
+-
+
+F:/ZombiesVSHumans/Zombie.h
+Entity.h
+F:/ZombiesVSHumans/Entity.h
+
