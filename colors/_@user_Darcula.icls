@@ -1,0 +1,14 @@
+<scheme name="_@user_Darcula" version="142" parent_scheme="Darcula">
+  <metaInfo>
+    <property name="created">2020-12-12T13:34:53</property>
+    <property name="ide">CLion</property>
+    <property name="ideVersion">2019.3.2.0.0</property>
+    <property name="modified">2020-12-12T17:27:56</property>
+    <property name="originalScheme">Darcula</property>
+  </metaInfo>
+  <colors>
+    <option name="FOLDED_TEXT_BORDER_COLOR" value="" />
+    <option name="LINE_NUMBERS_COLOR" value="ffffff" />
+    <option name="READONLY_BACKGROUND" value="3c3f41" />
+  </colors>
+</scheme>
