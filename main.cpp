@@ -182,7 +182,7 @@ std::vector<std::string> getOpenSpacesZombie(Zombie zombie) {
         }
     }
 
-    if (canHeadNorth && canHeadWest) {
+    if (canHeadNorth && canHeadEast) {
         if (grid[xPos + 1][yPos + 1] == 1)
         {
             openSpaces.emplace_back("North-East");
@@ -190,7 +190,7 @@ std::vector<std::string> getOpenSpacesZombie(Zombie zombie) {
         }
     }
 
-    if (canHeadNorth && canHeadEast){
+    if (canHeadNorth && canHeadWest){
         if (grid[xPos - 1][yPos + 1] == 1)
         {
             openSpaces.emplace_back("North-West");
