@@ -14,10 +14,10 @@
 using namespace std;
 
 int compGuess = rand() % 20 +1;
-int numOfH = 50;
-int numOfZ = 8;
+int numOfH = 1;
+int numOfZ = 1;
 bool targeted;
-const int gridSize = 10;
+const int gridSize = 3;
 
 std::vector<Zombie> ListOfAllZombies;
 std::vector<Human> ListOfAllHumans;
@@ -100,7 +100,7 @@ void InitializeEntities(int numOfZombies, int numOfHumans){
                 break;
             }
         }
-    }
+    } // what
 
     count = 0;
     for (int i = 0; i < numOfHumans; i++)
@@ -201,12 +201,12 @@ std::vector<std::string> getOpenSpacesZombie(Zombie zombie) {
     if (canHeadSouth && canHeadWest ){
         if (grid[xPos - 1][yPos - 1] == 1) //South-West
         {
-            openSpaces.emplace_back("South-East");
+            openSpaces.emplace_back("South-West");
             targeted = true;
         }
     }
 
-    if (canHeadSouth && canHeadWest ) {
+    if (canHeadSouth && canHeadEast ) {
         if (grid[xPos + 1][yPos - 1] == 1) //South-East
         {
             openSpaces.emplace_back("South-East");
@@ -262,14 +262,14 @@ std::vector<std::string> getOpenSpacesZombie(Zombie zombie) {
         }
     }
 
-    if (canHeadSouth && canHeadWest) {
+    if (canHeadSouth && canHeadEast) {
         if (grid[xPos + 1][yPos - 1] == 0) //South-West
         {
             openSpaces.emplace_back("South-East");
         }
     }
 
-    if (canHeadSouth && canHeadEast) {
+    if (canHeadSouth && canHeadWest) {
         if (grid[xPos - 1][yPos + 1] == 0) //North-East
         {
             openSpaces.emplace_back("South-West");
@@ -340,21 +340,27 @@ std::vector<std::string> getOpenSpacesHuman(Human human){
 
 
 void moveAllZombies() {
+    int currXPos;
+    int currYPos;
+
+    int newXPos;
+    int newYPos;
+
     for (auto zom : ListOfAllZombies) {
         std::vector<string> checkIfEmpty = getOpenSpacesZombie(zom);
         if (!checkIfEmpty.empty()){
         zom.setOpenDirections(getOpenSpacesZombie(zom));
 
-        int currXPos = zom.xPosition;
-        int currYPos = zom.yPosition;
+         currXPos = zom.xPosition;
+         currYPos = zom.yPosition;
         zom.move();
-        int newXPos = zom.xPosition;
-        int newYPos = zom.yPosition;
+         newXPos = zom.xPosition;
+         newYPos = zom.yPosition;
 
         //setGridPointEmpty(currXPos, currYPos);
         grid[currXPos][currYPos] = 0;
 
-        grid[newYPos][newXPos] = 2;
+        grid[currXPos][currYPos] = 2;
         //setGridPointZombie(newYPos, newXPos);s
 
         if (targeted) {
@@ -384,7 +390,7 @@ void moveAllHumans() {
             //setGridPointEmpty(currXPos, currYPos);
             grid[currXPos][currYPos] = 0;
             //setGridPointHuman(newYPos, newXPos);
-            grid[newYPos][newXPos] = 1;
+            grid[currXPos][currYPos] = 1;
 
         }
     }
@@ -400,7 +406,7 @@ void printOut(){
         {
             count += 1;
             std::cout << j;
-            if (count == 20){
+            if (count == gridSize){
                 count = 0;
                 std::cout << "" << endl;
             }
@@ -449,7 +455,9 @@ int main() {
         if(counter>pauseInterval * CLOCKS_PER_SEC)
         {
             moveAllZombies();
+
             removeDeadHumans();
+
             moveAllHumans();
 
             iterationNum +=1;
