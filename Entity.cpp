@@ -38,3 +38,7 @@ void Entity::setYPosition(int y) {
 void Entity::setXPosition(int x) {
     xPosition = x;
 }
+
+void Entity::incremementCounter() {
+    counter++;
+}

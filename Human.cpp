@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Human.h"
 #include <random>
+#include <utility>
 #include <vector>
 #include <algorithm>    // std::random_shuffle
 #include <ctime>        // std::time
@@ -22,27 +23,53 @@ void Human::move(){
     if (direction == "North")
     {
         yPosition = yPosition + 1;
-        setYPosition(yPosition);
 
     }
-    if(direction == "South")
+    else if(direction == "South")
     {
         yPosition = yPosition - 1 ;
-        setYPosition(yPosition);
+
     }
     else if (direction == "East")
     {
         xPosition = xPosition + 1;
-        setXPosition(xPosition);
+
     }
     else if (direction == "West")
     {
         xPosition = xPosition - 1;
-        setXPosition(xPosition);
+
     }
 
 }
 
 void Human::setOpenDirections(std::vector<std::string> directions) {
-        openDirections = directions;
+        openDirections = std::move(directions);
+}
+
+std::string Human::recruitHuman() {
+    std::string direction =  openDirections.at(0);
+    if (getCounter() == 8){
+        if (direction == "North")
+        {
+            resetCounter();
+            return "North";
+        }
+        else if(direction == "South")
+        {
+            resetCounter();
+            return "South";
+        }
+        else if (direction == "East")
+        {
+            resetCounter();
+            return "East";
+        }
+        else if (direction == "West")
+        {
+            resetCounter();
+            return "West";
+        }
+    }
+    return "";
 }

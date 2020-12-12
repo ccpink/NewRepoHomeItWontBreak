@@ -14,7 +14,7 @@ private:
     std::vector<std::string> openDirections;
 public:
     Zombie(int x, int y, int ID);
-    bool turnZombie();
+    std::string turnZombie();
     void move();
 
     void setOpenDirections(std::vector<std::string> directions);

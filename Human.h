@@ -15,7 +15,7 @@ public:
     Human(int x1, int x2, int ID);
 
     void setOpenDirections(std::vector<std::string> directions);
-
+    std::string recruitHuman();
     void move();
 };
 

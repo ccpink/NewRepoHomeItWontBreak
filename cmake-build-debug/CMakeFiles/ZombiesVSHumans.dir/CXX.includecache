@@ -8,10 +8,18 @@
 
 F:/ZombiesVSHumans/Entity.h
 
+F:/ZombiesVSHumans/Human.h
+vector
+F:/ZombiesVSHumans/vector
+Entity.h
+F:/ZombiesVSHumans/Entity.h
+
 F:/ZombiesVSHumans/Zombie.cpp
 string
 -
 iostream
+-
+utility
 -
 vector
 -
@@ -21,10 +29,30 @@ random
 -
 algorithm
 -
-chrono
--
 
 F:/ZombiesVSHumans/Zombie.h
+Entity.h
+F:/ZombiesVSHumans/Entity.h
+
+F:/ZombiesVSHumans/classValues.h
+vector
+-
+
+F:/ZombiesVSHumans/main.cpp
+iostream
+-
+random
+-
+ctime
+-
+Human.h
+F:/ZombiesVSHumans/Human.h
+Zombie.h
+F:/ZombiesVSHumans/Zombie.h
+vector
+F:/ZombiesVSHumans/vector
+classValues.h
+F:/ZombiesVSHumans/classValues.h
 Entity.h
 F:/ZombiesVSHumans/Entity.h
 

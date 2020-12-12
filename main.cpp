@@ -303,7 +303,7 @@ std::vector<std::string> getOpenSpacesHuman(Human human){
         canHeadSouth = false;
     }
 
-if (canHeadNorth){
+    if (canHeadNorth){
         if (grid[xPos][yPos + 1] == 0)// North
         {
             openSpaces.emplace_back("North");
@@ -338,25 +338,28 @@ if (canHeadNorth){
 
 void moveAllZombies() {
     for (auto zom : ListOfAllZombies) {
-            zom.setOpenDirections(getOpenSpacesZombie(zom));
+        std::vector<string> checkIfEmpty = getOpenSpacesZombie(zom);
+        if (!checkIfEmpty.empty()){
+        zom.setOpenDirections(getOpenSpacesZombie(zom));
 
-            int currXPos = zom.xPosition;
-            int currYPos = zom.yPosition;
-            zom.move();
-            int newXPos = zom.xPosition;
-            int newYPos = zom.yPosition;
+        int currXPos = zom.xPosition;
+        int currYPos = zom.yPosition;
+        zom.move();
+        int newXPos = zom.xPosition;
+        int newYPos = zom.yPosition;
 
-            //setGridPointEmpty(currXPos, currYPos);
-            grid[currXPos][currYPos] = 0;
+        //setGridPointEmpty(currXPos, currYPos);
+        grid[currXPos][currYPos] = 0;
 
-            grid[newYPos][newXPos] = 2;
-            //setGridPointZombie(newYPos, newXPos);s
+        grid[newYPos][newXPos] = 2;
+        //setGridPointZombie(newYPos, newXPos);s
 
-            if (targeted) {
-                // create a list of killed humans
-                killedHumans.emplace_back(newXPos,newYPos);
-            }
+        if (targeted) {
+            // create a lkist of killed humans
+            killedHumans.emplace_back(newXPos,newYPos);
         }
+        }
+    }
 
     }
 
@@ -365,20 +368,22 @@ void moveAllZombies() {
 
 void moveAllHumans() {
     for (auto hum : ListOfAllHumans) {
+        std::vector<string> checkIfEmpty = getOpenSpacesHuman(hum);
+        if (!checkIfEmpty.empty()) {
+            hum.setOpenDirections(getOpenSpacesHuman(hum));
 
-        hum.setOpenDirections(getOpenSpacesHuman(hum));
+            int currXPos = hum.xPosition;
+            int currYPos = hum.yPosition;
+            hum.move();
+            int newXPos = hum.xPosition;
+            int newYPos = hum.yPosition;
 
-        int currXPos = hum.xPosition;
-        int currYPos = hum.yPosition;
-        hum.move();
-        int newXPos = hum.xPosition;
-        int newYPos = hum.yPosition;
+            //setGridPointEmpty(currXPos, currYPos);
+            grid[currXPos][currYPos] = 0;
+            //setGridPointHuman(newYPos, newXPos);
+            grid[newYPos][newXPos] = 1;
 
-        //setGridPointEmpty(currXPos, currYPos);
-        grid[currXPos][currYPos] = 0;
-        //setGridPointHuman(newYPos, newXPos);
-        grid[newYPos][newXPos] = 1;
-
+        }
     }
 }
 
@@ -410,6 +415,11 @@ int main() {
     // Entities on Grid
     InitializeEntities(numOfZ,numOfH);
 
+    double counter = 0;
+    double pauseInterval = 5;
+    clock_t startTime = clock();
+    clock_t previousTime = startTime;
+
     for (auto human : ListOfAllHumans) {
         setGridPointHuman(human.xPosition,human.yPosition);
     }
@@ -418,10 +428,6 @@ int main() {
         setGridPointZombie(zombie.xPosition,zombie.yPosition);
     }
 
-    // Move all the entities
-    // Zombies and then Humans
-
-    // Then Recruit and Convert if they can.
     int iterationNum = 1;
     std::cout << "" << endl;
     std::cout << "" << endl;
@@ -433,9 +439,46 @@ int main() {
     std::cout << "" << endl;
     printOut();
 
+    while(true){
+        startTime = clock();
+        counter += startTime - previousTime;
+        previousTime = startTime;
+        if(counter>pauseInterval * CLOCKS_PER_SEC)
+        {
+            moveAllZombies();
+            removeDeadHumans();
+            moveAllHumans();
+
+            iterationNum +=1;
+            std::cout << "" << endl;
+            std::cout << "" << endl;
+            std::cout << "Current Iteration: " << endl;
+            std::cout << iterationNum << endl;
+            std::cout << "" << endl;
+            printOut();
+
+            counter = 0;
+        }
+    }
+
+
+
+
+
+
+    // Move all the entities
+    // Zombies and then Humans
+
+    // Then Recruit and Convert if they can.
+
+
+
+
+
     moveAllZombies();
     removeDeadHumans();
     moveAllHumans();
+
     iterationNum +=1;
     std::cout << "" << endl;
     std::cout << "" << endl;
@@ -448,18 +491,7 @@ int main() {
     moveAllZombies();
     removeDeadHumans();
     moveAllHumans();
-    iterationNum +=1;
-    std::cout << "" << endl;
-    std::cout << "" << endl;
-    std::cout << "Current Iteration: " << endl;
-    std::cout << iterationNum << endl;
-    std::cout << "" << endl;
-    printOut();
 
-
-    moveAllZombies();
-    removeDeadHumans();
-    moveAllHumans();
     iterationNum +=1;
     std::cout << "" << endl;
     std::cout << "" << endl;
@@ -475,7 +507,7 @@ void removeDeadHumans() {
     int count = 0;
     int x;
     int y;
-
+    deleteHumanIndex.clear();
 
     count = 0;
     for(auto human : ListOfAllHumans)
@@ -491,6 +523,8 @@ void removeDeadHumans() {
         }
         count++;
     }
+
+
 
     for(auto index : deleteHumanIndex)
     {
