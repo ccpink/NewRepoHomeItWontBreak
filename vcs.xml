@@ -6,6 +6,10 @@
           <option name="url" value="https://github.com/NSCC-PROG2007-2020/assignment-1-ccpink.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/NSCC-Winter-2021/sample-assignment-ccpink" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="D:\" />
