@@ -2,5 +2,9 @@
   <component name="PrintSettings">
     <option name="includeSubdirectories" value="true" />
     <option name="printScope" value="1" />
+    <option name="PAPER_SIZE" value="4A0" />
+    <option name="FONT_SIZE" value="12" />
+    <option name="PRINT_LINE_NUMBERS" value="false" />
+    <option name="DRAW_BORDER" value="false" />
   </component>
 </application>
