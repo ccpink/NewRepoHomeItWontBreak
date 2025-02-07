@@ -1,7 +1,8 @@
 <application>
-  <component name="FileTypeManager" version="17">
+  <component name="FileTypeManager" version="18">
     <extensionMap>
       <mapping pattern=".ccp" type="PLAIN_TEXT" />
+      <mapping ext="expected" type="PLAIN_TEXT" />
       <mapping ext="d09f12e3" type="PLAIN_TEXT" />
     </extensionMap>
   </component>
