@@ -2,14 +2,19 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="6f486018-0c80-4b87-a343-8b0a86a322cd" name="WSL (6f486018-0c80-4b87-a343-8b0a86a322cd)" url="http:///">
-        <fileTransfer host="localhost" port="2222" accessType="SFTP">
-          <option name="port" value="2222" />
-        </fileTransfer>
+        <fileTransfer accessType="SFTP" host="timberlea.cs.dal.ca" port="22" sshConfigId="441a4948-8224-42a8-8f94-e1b31248fc4a" sshConfig="WSL (6f486018-0c80-4b87-a343-8b0a86a322cd)" />
       </webServer>
       <webServer id="15a560c1-c7e5-4e12-8fb6-750c8cfa3365" name="WSL (1) (15a560c1-c7e5-4e12-8fb6-750c8cfa3365)" url="http:///">
-        <fileTransfer host="localhost" port="22" accessType="SFTP">
-          <option name="port" value="22" />
-        </fileTransfer>
+        <fileTransfer accessType="SFTP" host="localhost" port="22" sshConfigId="573f4a12-47d7-45e3-a897-6c44811f9b9c" sshConfig="WSL (1) (15a560c1-c7e5-4e12-8fb6-750c8cfa3365)" />
+      </webServer>
+      <webServer id="2b01777c-c9a8-4790-8c3f-ecc432f81c52" name="WSL (2b01777c-c9a8-4790-8c3f-ecc432f81c52)" url="http:///">
+        <fileTransfer accessType="SFTP" host="timberlea.cs.dal.ca" port="22" sshConfigId="441a4948-8224-42a8-8f94-e1b31248fc4a" sshConfig="WSL (6f486018-0c80-4b87-a343-8b0a86a322cd)" />
+      </webServer>
+      <webServer id="49f1a806-1ecf-4ee8-90f4-f28b98cc4d62" name="WSL (1) (49f1a806-1ecf-4ee8-90f4-f28b98cc4d62)" url="http:///">
+        <fileTransfer accessType="SFTP" host="localhost" port="22" sshConfigId="573f4a12-47d7-45e3-a897-6c44811f9b9c" sshConfig="WSL (1) (15a560c1-c7e5-4e12-8fb6-750c8cfa3365)" />
+      </webServer>
+      <webServer id="9a93b79c-b087-4e38-98cc-82e52a2dac4c" name="pink@timberlea.cs.dal.ca (9a93b79c-b087-4e38-98cc-82e52a2dac4c)" url="http:///">
+        <fileTransfer accessType="SFTP" host="timberlea.cs.dal.ca" port="22" sshConfigId="441a4948-8224-42a8-8f94-e1b31248fc4a" sshConfig="WSL (6f486018-0c80-4b87-a343-8b0a86a322cd)" />
       </webServer>
     </option>
   </component>
